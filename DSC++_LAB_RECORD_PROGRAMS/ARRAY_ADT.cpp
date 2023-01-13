@@ -46,7 +46,7 @@ void Array<T>::Enhance()
     for(int i=0;i<=cur_size;i++);
         temp[i]=arr[i];
 
-    delete arr[];
+    delete []arr;
     arr=temp;
 
     capacity=capacity*2;
@@ -83,23 +83,32 @@ void Array<T>::InsertAtEnd(T ele)
 template <class T>
 void Array<T>::InsertAtPos(T ele,int index)
 {
-    if(isFull)
+    if(isFull())
         Enhance();
-    for(int i=cur_size-1;i>=index;i--)
-        arr[i+1]=arr[i];
+    if(index<0||index>capacity)
+    {    
+        cout<<"Invalid Index";
+        return 0;
+    }
+    else
+    {
+        for(int i=cur_size-1;i>=index;i--)
+            arr[i+1]=arr[i];
     
-    arr[index]=ele;
+         arr[index]=ele;
 
-    cur_size++;
-    cout<<"Inserted element at "<<index<<endl;
+        cur_size++;
+        cout<<"Inserted element at "<<index<<endl;
+    }
 }
 
 template <class T>
 T Array<T>::DeleteFromEnd()
 {
     if(isEmpty())
-    {    cout<<"Array is Empty"<<endl;
-         return;
+    {    
+        cout<<"Array is Empty"<<endl;
+        return 0;
     }
     else
     {
@@ -115,26 +124,34 @@ template <class T>
 T Array<T>::DeleteFromPos(int index)
 {
     if(isEmpty())
-    {    cout<<"Array is Empty"<<endl;
-         return;
+    {       cout<<"Array is Empty"<<endl;
+            return 0;
     }
     else
     {
-        T *temp;
-        temp=arr[index];
+        if(index<0||index>capacity)
+        {    
+            cout<<"Invalid Index";
+            return 0;
+        }
+        else
+        {
+            T *temp;
+            temp=arr[index];
 
-        for(int i=index+1;i<=cur_size;i++)
-            arr[i-1]=arr[i];
+            for(int i=index+1;i<=cur_size;i++)
+                arr[i-1]=arr[i];
         
-        arr[cur_size]=INT_MIN;
-        cur_size--;
+            arr[cur_size]=INT_MIN;
+            cur_size--;
 
         return temp;
+        }
     }
 }
 
 template <class T>
-void ARRAY<T>::Display()
+void Array<T>::Display()
 {
     if(isEmpty())
     {
@@ -148,5 +165,28 @@ void ARRAY<T>::Display()
         }
 
         cout<<endl;
+    }
+}
+
+int main()
+{
+    Array<int>arr1(5);
+
+    int index,x,ele,temp1;
+
+    while(1)
+    {
+        cout<<"Menu\n1.Insert at the end\n 2.Insert at an index\n 3.Delete at the end\n 4.Delete from an index\n 5.Display array\n ";
+        switch (x)
+        {
+        case 1:
+            cout<<"Enter element :";
+            cin>>ele;
+            arr1.InsertAtEnd(ele);
+            break;
+        
+        default:
+            break;
+        }
     }
 }
