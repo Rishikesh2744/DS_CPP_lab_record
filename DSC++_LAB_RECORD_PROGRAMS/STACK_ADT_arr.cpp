@@ -32,8 +32,6 @@ Stack<T>::Stack()
 template <class T>
 Stack<T>::~Stack()
 {
-    top==-1;
-    cap=0;
     delete st[];
 }
 
@@ -72,7 +70,7 @@ void Stack<T>::display()
 template <class T>
 void Stack<T>::push(T ele)
 {
-    if(isEmpty())
+    if(isFull())
         enhance();
     st[++top]=ele;
     top++;
