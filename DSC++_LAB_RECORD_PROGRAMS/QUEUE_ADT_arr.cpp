@@ -15,8 +15,8 @@ class queue
         bool isFull();
         void enhance();
         void display();
-        void push(T ele);
-        T pop();  
+        void enqueue(T ele);
+        T dequeue();  
         T frontele();
         T rearele();   
 };
@@ -55,7 +55,7 @@ bool queue<T>::isEmpty()
 template <class T>
 bool queue<T>::isFull()
 {
-    if(rear==capacity-1)
+    if(front==0 && rear==capacity-1)
         return true;
     else
         return false;
@@ -71,8 +71,10 @@ void queue<T>::enhance()
         temp[i]=q[i];
     
     delete []q;
+
     capacity=2*capacity;
     q=temp;
+
     cout<<"Q size is doubled\n"<<endl;
 }
 
@@ -91,12 +93,11 @@ void queue<T>::display()
 }
 
 template <class T>
-void queue<T>::push(T ele)
+void queue<T>::enqueue(T ele)
 {
     if(isFull())
         enhance();
-    if(front==-1)
-        front=0;
+
     else if(front>0)
     {
         for(int i=front;i<=rear;i++)
@@ -108,23 +109,31 @@ void queue<T>::push(T ele)
     q[++rear]=ele;
     rear++;
 
+    if(front==-1)
+        front=0;
+
     cout<<"element is inserted"<<endl;
 }
 
 template<class T> 
-T queue<T>::pop()
+T queue<T>::dequeue()
 {
     if(isEmpty())
     {
         cout<<"Q is empty"<<endl;
-        return 0;
+        return;
     }
     T *temp;
     temp=q[front];
+
     if(front==rear)
         front=rear=-1;
     else
-        front++;
+    {
+        for(int i=0;i<=rear;i++)
+            q[i]=q[i+1];
+        rear--;
+    }
     return temp;
 }
 
@@ -134,7 +143,7 @@ T queue<T>::frontele()
     if(isEmpty())
     {
             cout<<"Q is empty"<<endl;
-            return 0;
+            return;
     }
     else
     {
@@ -149,7 +158,7 @@ T queue<T>::rearele()
     if(isEmpty())
     {
         cout<<"q is empty"<<endl;
-        return 0;
+        return;
     }
     else
         return q[rear];
