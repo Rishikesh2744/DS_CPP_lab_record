@@ -24,6 +24,16 @@ class SLL
             first=NULL;
         }
 
+        ~SLL()
+        {
+            for(node<T> *cur=first;cur;cur=cur->next)
+            {
+                first=first->next;
+                delete cur;
+                cur=first;
+            }
+        }
+
         void insertatbeg(T ele);
         void insertatend(T ele);
         void insertatpos(T ele,int index);
@@ -77,7 +87,7 @@ void SLL<T>::insertatend(T ele)
             cur=cur->next;
         cur->next=nn;
     }
-    cout<<"Node Inserted"<<cout;
+    cout<<"Node Inserted"<<endl;
 }
 
 template <class T>
@@ -106,7 +116,113 @@ void SLL<T>::insertatpos(T ele, int index)
         }
         else
         {
-            
+            cour<<"Invalid Index Position"<<endl;
+            return;
         }
     }
+    cout<<"Node Inserted"<<endl;
+}
+
+template <class T>
+T SLL<T>::delfrombeg()
+{
+    if(first!=NULL)
+    {
+        node<T> *cur=first;
+        T temp=cur->data;
+
+        first=first->next;
+
+        delete cur;
+        return temp;
+    }
+    else
+    {
+        cout<<"empty chain,can't delete"<<endl;
+        return 0;
+    }
+}
+
+template <class T>
+T SLL<T>::delfromend()
+{
+    if(first!=NULL)
+    {
+        node<T> *prev;
+        T temp;
+        node<T> *cur=first;
+        while(cur->next!=NULL)
+        {
+            prev=cur;
+            cur=cur->next;
+        }
+        
+        T temp=cur->data;
+
+        if(first->next==NULL)
+        {
+            first=NULL;
+        }
+        else
+        {
+            prev->next=NULL;
+        }
+
+        delete cur;
+        return temp;
+    }
+    else
+    {
+        cout<<"empty chain,can't be deleted"<<endl;
+        return 0;
+    }
+}
+
+template <class T>
+void SLL<T>::display()
+{ 
+    if(first!=NULL)
+    {
+        for(node<T> *cur=first;cur;cur=cur->next)
+        {
+            cout<<cur->data<<"  ";
+        }
+        cout<<endl;
+    }
+    else
+    {
+        cour<<"\nList is empty";
+    }
+}
+
+template<class T>
+T delfrompos(int index)
+{
+    if(first!=NULL)
+    {
+        node<T> *cur,*prev;
+        T temp;
+
+        if(index==1)
+        {
+            cur=first;
+            first=first->next;
+        }
+        else
+        {
+            for(int i=1,cur=first;i<index&&(cur!=NULL);cur=cur->next,i++)
+                prev=cur;
+        }
+
+        if(cur!=NULL)
+            prev->next=cur->next;
+        else
+        {
+            cout<<"Invalid postion,cant delete";
+            return 0;
+        }
+    }
+    temp=cur->data;
+    delete cur;
+    return temp;
 }
