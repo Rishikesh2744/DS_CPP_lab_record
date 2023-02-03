@@ -1,4 +1,9 @@
-#include<iostream>
+# 1 "C:\\Users\\brish\\OneDrive\\Documents\\GitHub\\lab_record\\DSC++_LAB_RECORD_PROGRAMS\\QUEUE_USING_LL.cpp"
+# 1 "C:\\Users\\brish\\OneDrive\\Documents\\GitHub\\lab_record\\DSC++_LAB_RECORD_PROGRAMS//"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "C:\\Users\\brish\\OneDrive\\Documents\\GitHub\\lab_record\\DSC++_LAB_RECORD_PROGRAMS\\QUEUE_USING_LL.cpp"
+include<iostream
 using namespace std;
 
 template<class T>
@@ -16,12 +21,12 @@ class node
                 data=ele;
                 node<T> *next=NULL;
         }
-    
+
     friend class Q_linked;
-};
+}
 
 template<class T>
-class Q_linked()
+class Q_linked()6
 {
     node<T> *front,*rear;
 
@@ -35,7 +40,7 @@ class Q_linked()
         {
             if(front==NULL && rear=NULL)
                 return true;
-            else   
+            else
                 return false;
         }
 
