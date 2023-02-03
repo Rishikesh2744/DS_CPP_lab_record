@@ -10,7 +10,7 @@ class node
     T data;
     node<T> *next;
 
-    friend class SLL<T>
+    friend class SLL<T>;
 };
 
 template<class T>
@@ -62,9 +62,9 @@ void SLL<T>::insertatbeg(T ele)
     else
     {
         nn->next=first;
-        firt=nn;
+        first=nn;
     }
-    cout<<"Node Inserted\n"
+    cout<<"Node Inserted\n";
 }
 
 template <class T>
@@ -83,7 +83,7 @@ void SLL<T>::insertatend(T ele)
     }
     else
     {
-        while(cur->!=NULL)
+        while(cur->next!=NULL)
             cur=cur->next;
         cur->next=nn;
     }
@@ -99,14 +99,15 @@ void SLL<T>::insertatpos(T ele, int index)
 
     node<T> *cur=first;
 
-    if(pos==1)
+    if(index==1)
     {
         nn->next=first;
         first=nn;
     }
     else
     {
-        for(int i=1;i<index-1&&cur->next;i++)
+        int i;
+        for( i=1;i<index-1&&cur->next;i++)
             cur=cur->next;
         
         if(i=index-1)
@@ -116,7 +117,7 @@ void SLL<T>::insertatpos(T ele, int index)
         }
         else
         {
-            cour<<"Invalid Index Position"<<endl;
+            cout<<"Invalid Index Position"<<endl;
             return;
         }
     }
@@ -157,7 +158,7 @@ T SLL<T>::delfromend()
             cur=cur->next;
         }
         
-        T temp=cur->data;
+        temp=cur->data;
 
         if(first->next==NULL)
         {
@@ -191,16 +192,17 @@ void SLL<T>::display()
     }
     else
     {
-        cour<<"\nList is empty";
+        cout<<"\nList is empty";
     }
 }
 
 template<class T>
-T delfrompos(int index)
+T SLL<T>::delfrompos(int index)
 {
+    node<T> *cur=first,*prev;
     if(first!=NULL)
     {
-        node<T> *cur,*prev;
+        
         T temp;
 
         if(index==1)
@@ -210,7 +212,7 @@ T delfrompos(int index)
         }
         else
         {
-            for(int i=1,cur=first;i<index&&(cur!=NULL);cur=cur->next,i++)
+            for(int i=1;i<index&&(cur!=NULL);cur=cur->next,i++)
                 prev=cur;
         }
 
@@ -222,7 +224,7 @@ T delfrompos(int index)
             return 0;
         }
     }
-    temp=cur->data;
+    T temp=cur->data;
     delete cur;
     return temp;
 }
