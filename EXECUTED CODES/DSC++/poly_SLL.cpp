@@ -184,3 +184,22 @@ int main()
     cin >> x;
     cout << "result of first polynomial: " << p1.eval(x) << endl;
 }
+
+/*Output:
+enter the coefficient value and power value in decreasing order of power and enter coeff value 0 
+to terminate
+32-21700
+enter the coefficient value and power value in decreasing order of power and enter coeff value 0 
+to terminate
+62-900
+First polynomial is
+3x^2-2x^1+7x^0
+Second polynomial is
+6x^2-9x^0
+sum of given polynomials is:
+9x^2-2x^1-2x^0
+Product of given polynomials is:
+18x^4-12x^3+15x^2+18x^1-63x^0
+enter x value for polynomial evaluation
+2
+result of first polynomial: 15*/
