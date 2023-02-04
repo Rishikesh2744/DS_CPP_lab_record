@@ -46,7 +46,7 @@ int searching<t>::linearsearch(t key)
     else
         return i + 1;
 }
-nt main()
+int main()
 {
     searching<int> s;
     int key;
