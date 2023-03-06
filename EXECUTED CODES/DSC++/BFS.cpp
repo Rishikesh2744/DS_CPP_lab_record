@@ -14,7 +14,7 @@ class bfs(int S)
                         if(graph[S][i]!=0 && visited[i]==0) // if adjacent to S and not visited or not
                         {
                                 visited[i]=1;
-                                queue[++rear]
+                                queue[++rear];
                         }
                 }
 
