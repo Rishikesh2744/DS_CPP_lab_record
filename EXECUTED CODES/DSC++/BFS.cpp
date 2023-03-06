@@ -21,7 +21,7 @@ class bfs(int S)
                 if(front > rear)        //if front is greater than rear queue is empty
                         break;
                 S=queue[front++];   // pop front vertex from queue
-                cout<< S << "\t';
+                cout<< S << "\t";
         }
 }
 
@@ -53,7 +53,7 @@ int main()
         cout<<"\n Enter source vertex: ";
         cin>>S;
         cout<<" Breadth First Traversal : \n";
-
+]
         bfs(S);
 
         return 0;
