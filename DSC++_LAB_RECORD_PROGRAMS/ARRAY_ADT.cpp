@@ -113,8 +113,8 @@ T Array<T>::DeleteFromEnd()
     else
     {
         T *temp;
-        temp=arr[cur_size];
-        arr[cur_size]=INT_MIN;
+        temp=arr[cur_size-1];
+        arr[cur_size-1]=INT_MIN;
         cur_size--;
         return temp;
     }

@@ -3,11 +3,19 @@ using namespace std;
 
 class bfs(int S)
 {
+<<<<<<< Updated upstream
         visited[S]=1;   //source is visited
 
         cout<< S <<"\t";    //source is printed 
 
         while(true)
+=======
+    visited[v] = 1;
+    cout << v << "\t";
+    while(1)
+    {
+        for (i = 1; i <= n; i++) // for all the vertices
+>>>>>>> Stashed changes
         {
                 for(int i=1;i<=n;i++)   
                 {

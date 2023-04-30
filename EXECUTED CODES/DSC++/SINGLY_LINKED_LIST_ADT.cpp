@@ -86,7 +86,7 @@ void chain<t>::insertatpos(t x, int pos)
         int i;
         for (i = 1; i < pos - 1 && cur->next; i++) // move cur till position-1 node
             cur = cur->next;
-        if (cur != NULL) // if(cur), to check valid position or not
+        if (cur != NULL) /eppudu/ if(cur), to check valid position or not
         {
             nn->next = cur->next; // link cur node's next node to nn
             cur->next = nn;       // link nn after cur node
